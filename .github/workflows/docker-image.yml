@@ -23,8 +23,16 @@ jobs:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
-        echo "Login into docker repository..."
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-        echo "Login successful"
-    # - name: Build the Docker image
-    #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+        
+    - name: Build docker image
+      run: |
+         docker build --tag nanelmtzz/graphql-actions:0.0.2 .
+         
+    - name: Push image
+      run: |
+          docker push nanelmtzz/graphql-actions:0.0.2
+        
+    
+       
+         
