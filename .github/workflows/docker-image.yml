@@ -28,10 +28,12 @@ jobs:
     - name: Build docker image
       run: |
          docker build --tag nanelmtzz/graphql-actions:0.0.2 .
+         docker build --tag nanelmtzz/graphql-actions:latest .
          
     - name: Push image
       run: |
           docker push nanelmtzz/graphql-actions:0.0.2
+          docker push nanelmtzz/graphql-actions
         
     
        
